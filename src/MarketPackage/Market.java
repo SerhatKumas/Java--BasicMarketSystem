@@ -1,4 +1,4 @@
-package marketPackage;
+package MarketPackage;
 
 public class Market {
     private String marketId;
