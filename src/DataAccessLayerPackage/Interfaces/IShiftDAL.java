@@ -1,10 +1,10 @@
-package ControllerPackage;
+package DataAccessLayerPackage.Interfaces;
 
-import ShiftPackage.Shift;
+import AssetsPackage.ShiftPackage.Shift;
 
 import java.util.Date;
 
-public interface IShiftController {
+public interface IShiftDAL {
     void displayByDate(Date date);
     void displayByTimeRange(String startTime, String endTime);
     void displayByEmployeeId(String id);

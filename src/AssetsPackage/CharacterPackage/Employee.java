@@ -1,4 +1,4 @@
-package CharacterPackage;
+package AssetsPackage.CharacterPackage;
 
 import java.util.Date;
 

@@ -1,10 +1,10 @@
-package ControllerPackage;
+package DataAccessLayerPackage.Interfaces;
 
-import ProductPackage.Product;
+import AssetsPackage.ProductPackage.Product;
 
 import java.util.Date;
 
-public interface IProductController {
+public interface IProductDAL {
     void displayProductsByName(String name);
     void displayProductsByCategory(String category);
     void displayProductById(String id);

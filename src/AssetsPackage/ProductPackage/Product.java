@@ -1,4 +1,4 @@
-package ProductPackage;
+package AssetsPackage.ProductPackage;
 
 import java.util.Date;
 

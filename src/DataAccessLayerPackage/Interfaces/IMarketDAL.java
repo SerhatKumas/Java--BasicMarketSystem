@@ -1,8 +1,8 @@
-package ControllerPackage;
+package DataAccessLayerPackage.Interfaces;
 
-import MarketPackage.Market;
+import AssetsPackage.MarketPackage.Market;
 
-public interface IMarketController {
+public interface IMarketDAL {
     void displayMarketsByName(String name);
     void displayMarketsByLocation(String location);
     void displayMarketByMarketId(String id);

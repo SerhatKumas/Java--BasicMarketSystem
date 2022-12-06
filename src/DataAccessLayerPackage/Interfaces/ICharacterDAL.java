@@ -1,8 +1,8 @@
-package ControllerPackage;
+package DataAccessLayerPackage.Interfaces;
 
-import CharacterPackage.Worker;
+import AssetsPackage.CharacterPackage.Worker;
 
-public interface ICharacterController {
+public interface ICharacterDAL {
     void displayById(String id);
     void displayByName(String name);
     void displayBySsn(String ssn);

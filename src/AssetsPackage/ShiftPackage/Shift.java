@@ -1,4 +1,4 @@
-package ShiftPackage;
+package AssetsPackage.ShiftPackage;
 
 import java.util.Date;
 

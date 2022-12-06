@@ -1,4 +1,4 @@
-package MarketPackage;
+package AssetsPackage.MarketPackage;
 
 public class Market {
     private String marketId;
