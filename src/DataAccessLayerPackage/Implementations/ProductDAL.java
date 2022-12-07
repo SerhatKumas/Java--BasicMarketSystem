@@ -2,7 +2,6 @@ package DataAccessLayerPackage.Implementations;
 
 import AssetsPackage.ProductPackage.Product;
 import DataAccessLayerPackage.Interfaces.IProductDAL;
-import DataAccessLayerPackage.Interfaces.IRegisterDAL;
 
 import java.util.Date;
 
