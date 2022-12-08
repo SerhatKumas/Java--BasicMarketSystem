@@ -3,6 +3,7 @@ package AssetsPackage.ShiftPackage;
 import java.util.Date;
 
 public class Shift {
+    private String shiftId;
     private String employeeId;
     private String employeeName;
     private Date shiftDay;
@@ -10,6 +11,7 @@ public class Shift {
     private String timeOfEnd;
 
     public Shift() {
+        this.shiftId = "";
         this.employeeId = "";
         this.employeeName = "";
         this.shiftDay = null;
@@ -17,7 +19,8 @@ public class Shift {
         this.timeOfEnd = "";
     }
 
-    public Shift(String employeeId, String employeeName, Date shiftDay, String timeOfStart, String timeOfEnd) {
+    public Shift(String shiftId, String employeeId, String employeeName, Date shiftDay, String timeOfStart, String timeOfEnd) {
+        this.shiftId = shiftId;
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.shiftDay = shiftDay;
@@ -26,6 +29,7 @@ public class Shift {
     }
 
     public Shift(Shift shift) {
+        this.shiftId = shift.shiftId;
         this.employeeId = shift.employeeId;
         this.employeeName = shift.employeeName;
         this.shiftDay = shift.shiftDay;
