@@ -1,4 +1,4 @@
 package BusinessLayer.Interfaces;
 
-public interface EmployeeManager {
+public interface IEmployeeManager {
 }

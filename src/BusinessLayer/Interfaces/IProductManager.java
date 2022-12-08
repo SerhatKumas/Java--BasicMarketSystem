@@ -1,4 +1,4 @@
 package BusinessLayer.Interfaces;
 
-public interface OwnerManager {
+public interface IProductManager {
 }

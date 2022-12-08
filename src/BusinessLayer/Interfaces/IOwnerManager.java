@@ -1,4 +1,4 @@
 package BusinessLayer.Interfaces;
 
-public interface MarketManager {
+public interface IOwnerManager {
 }
