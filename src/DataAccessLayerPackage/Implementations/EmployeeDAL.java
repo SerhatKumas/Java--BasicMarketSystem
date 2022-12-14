@@ -1,7 +1,5 @@
 package DataAccessLayerPackage.Implementations;
 
-import AssetsPackage.CharacterPackage.Employee;
-import AssetsPackage.CharacterPackage.Worker;
 import DataAccessLayerPackage.Interfaces.ICharacterDAL;
 
 import java.sql.ResultSet;
@@ -13,7 +11,7 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void displayById(Statement statement, String id) {
         try {
-        ResultSet resultSet = statement.executeQuery("select * from employeetable where EmployeeId = '"+id+"'");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeId = '"+id+"'");
         while(resultSet.next()){
             System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
         }
@@ -51,10 +49,11 @@ public class EmployeeDAL implements ICharacterDAL {
         try {
          boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeId = '"+id+"'");
          if(isDeleted){
-             System.out.println("Employee with "+id+" is deleted.");
+             System.out.println("Employee can not be deleted.");
+
          }
          else{
-             System.out.println("Employee can not be deleted.");
+             System.out.println("Employee with "+id+" id is deleted.");
          }
         } catch (Exception e) {
             System.out.println(e);
@@ -66,10 +65,10 @@ public class EmployeeDAL implements ICharacterDAL {
         try {
             boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeSSN = '"+ssn+"'");
             if(isDeleted){
-                System.out.println("Employee with "+ssn+" is deleted.");
+                System.out.println("Employee can not be deleted.");
             }
             else{
-                System.out.println("Employee can not be deleted.");
+                System.out.println("Employee with "+ssn+" ssn is deleted.");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -80,10 +79,11 @@ public class EmployeeDAL implements ICharacterDAL {
         try {
             boolean isAdded = statement.execute("INSERT INTO employeetable (`EmployeeId`, `EmployeeName`, `EmployeePhone`, `EmployeeSSN`, `EmployeeAddress`, `MarketId`, `DateOfBirth`, `EmployeeTitle`, `StartDate`, `EndDate`, `WorkerPassword`) VALUES ('"+workerId+"', '"+name+"', '"+phone+"', '"+ssn+"', '"+address+"', '"+marketId+"', '"+dateOfBirth+"', '"+title+"', '"+startDate+"', '"+endDate+"', '"+workerPassword+"')");
             if(isAdded){
-                System.out.println("Employee with is added.");
+                System.out.println("Employee can not be added.");
+
             }
             else{
-                System.out.println("Employee can not be added.");
+                System.out.println("Employee with is added.");
             }
         } catch (Exception e) {
             System.out.println(e);
