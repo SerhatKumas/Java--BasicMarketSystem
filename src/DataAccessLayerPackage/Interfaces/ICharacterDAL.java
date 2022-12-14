@@ -11,9 +11,4 @@ public interface ICharacterDAL {
 
     void deleteById(Statement statement, String id);
     void deleteBySsn(Statement statement, String ssn);
-
-    void updateById(Statement statement, String id);
-    void updateBySsn(Statement statement, String ssn);
-
-    void addNewCharacter(Worker worker);
 }

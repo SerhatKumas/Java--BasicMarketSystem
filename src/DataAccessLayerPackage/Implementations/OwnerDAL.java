@@ -32,18 +32,7 @@ public class OwnerDAL implements ICharacterDAL {
 
     }
 
-    @Override
-    public void updateById(Statement statement, String id) {
-
-    }
-
-    @Override
-    public void updateBySsn(Statement statement, String ssn) {
-
-    }
-
-    @Override
-    public void addNewCharacter(Worker worker) {
+    public void createNewOwner(Worker worker) {
 
     }
 }

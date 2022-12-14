@@ -13,7 +13,7 @@ public class Employee extends Worker{
         this.endDate = null;
     }
 
-    public Employee(String name, String phone, Date dateOfBirth, String ssn, String address, String workerId, String marketId, String workerPassword, String title, Date startDate, Date endDate) {
+    public Employee(String workerId, String name, String phone, String ssn, String address, String marketId, Date dateOfBirth, String title, Date startDate, Date endDate, String workerPassword) {
         super(name, phone, dateOfBirth, ssn, address, workerId, marketId, workerPassword);
         this.title = title;
         this.startDate = startDate;
