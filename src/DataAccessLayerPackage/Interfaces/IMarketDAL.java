@@ -2,19 +2,21 @@ package DataAccessLayerPackage.Interfaces;
 
 import AssetsPackage.MarketPackage.Market;
 
+import java.sql.Statement;
+
 public interface IMarketDAL {
-    void displayMarketsByName(String name);
-    void displayMarketsByLocation(String location);
-    void displayMarketByMarketId(String id);
-    void displayMarketsByOwnerId(String id);
+    void displayMarketsByName(Statement statement, String name);
+    void displayMarketsByLocation(Statement statement, String location);
+    void displayMarketByMarketId(Statement statement, String id);
+    void displayMarketsByOwnerId(Statement statement, String id);
 
-    void updateMarketByMarketId(String id);
+    void updateMarketByMarketId(Statement statement, String id);
 
-    void deleteMarketByMarketId(String id);
+    void deleteMarketByMarketId(Statement statement, String id);
 
-    Market createMarket(String marketId, String name, String location, String ownerId);
+    Market createMarket(Statement statement, String marketId, String name, String location, String ownerId);
 
-    void addMarket(String marketId, String name, String location, String ownerId);
+    void addMarket(Statement statement, String marketId, String name, String location, String ownerId);
 
     void printMarket(Market market);
 }

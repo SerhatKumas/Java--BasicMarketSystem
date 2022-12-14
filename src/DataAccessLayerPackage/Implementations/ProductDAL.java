@@ -3,47 +3,49 @@ package DataAccessLayerPackage.Implementations;
 import AssetsPackage.ProductPackage.Product;
 import DataAccessLayerPackage.Interfaces.IProductDAL;
 
+import java.sql.Statement;
 import java.util.Date;
 
 public class ProductDAL implements IProductDAL {
 
+
     @Override
-    public void displayProductsByName(String name) {
+    public void displayProductsByName(Statement statement, String name) {
 
     }
 
     @Override
-    public void displayProductsByCategory(String category) {
+    public void displayProductsByCategory(Statement statement, String category) {
 
     }
 
     @Override
-    public void displayProductById(String id) {
+    public void displayProductById(Statement statement, String id) {
 
     }
 
     @Override
-    public void displayByDateOfRegisteredInMarket(Date date) {
+    public void displayByDateOfRegisteredInMarket(Statement statement, Date date) {
 
     }
 
     @Override
-    public void deleteProductById(String id) {
+    public void deleteProductById(Statement statement, String id) {
 
     }
 
     @Override
-    public void updateProductById(String id) {
+    public void updateProductById(Statement statement, String id) {
 
     }
 
     @Override
-    public Product createProduct(String name, String productId, String marketId, String productCategory, Date dateOfProduction, Date dateOfRecommendedLastConsumption, Date dateOfRegisteredInMarket, Date dateOfPurchase) {
+    public Product createProduct(Statement statement, String name, String productId, String marketId, String productCategory, Date dateOfProduction, Date dateOfRecommendedLastConsumption, Date dateOfRegisteredInMarket, Date dateOfPurchase) {
         return null;
     }
 
     @Override
-    public void addProduct(String name, String productId, String marketId, String productCategory, Date dateOfProduction, Date dateOfRecommendedLastConsumption, Date dateOfRegisteredInMarket, Date dateOfPurchase) {
+    public void addProduct(Statement statement, String name, String productId, String marketId, String productCategory, Date dateOfProduction, Date dateOfRecommendedLastConsumption, Date dateOfRegisteredInMarket, Date dateOfPurchase) {
 
     }
 

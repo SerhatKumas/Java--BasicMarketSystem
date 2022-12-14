@@ -2,3 +2,11 @@
 .DS_Store
 out
 .gitignore.swp
+/bin/
+.project
+.classpath
+BasicMarketSystem.iml
+Java--BasicMarketSystem.iml
+classes
+.metadata
+src/deneme.java

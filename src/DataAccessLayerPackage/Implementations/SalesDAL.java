@@ -3,44 +3,47 @@ package DataAccessLayerPackage.Implementations;
 import AssetsPackage.SalesPackage.Sales;
 import DataAccessLayerPackage.Interfaces.ISalesDAL;
 
+import java.sql.Statement;
+
 public class SalesDAL implements ISalesDAL {
+
     @Override
-    public void displaySaleByID(String id) {
+    public void displaySaleByID(Statement statement, String id) {
 
     }
 
     @Override
-    public void displaySalesByShiftId(String shiftId) {
+    public void displaySalesByShiftId(Statement statement, String shiftId) {
 
     }
 
     @Override
-    public void displaySalesByWorkerId(String workerId) {
+    public void displaySalesByWorkerId(Statement statement, String workerId) {
 
     }
 
     @Override
-    public void displaySalesByProductId(String productId) {
+    public void displaySalesByProductId(Statement statement, String productId) {
 
     }
 
     @Override
-    public void deleteSalesById(String id) {
+    public void deleteSalesById(Statement statement, String id) {
 
     }
 
     @Override
-    public void updateSalesById(String id) {
+    public void updateSalesById(Statement statement, String id) {
 
     }
 
     @Override
-    public Sales createSales(String salesId, String shiftId, String workerId, String productId) {
+    public Sales createSales(Statement statement, String salesId, String shiftId, String workerId, String productId) {
         return null;
     }
 
     @Override
-    public void addSales(String salesId, String shiftId, String workerId, String productId) {
+    public void addSales(Statement statement, String salesId, String shiftId, String workerId, String productId) {
 
     }
 

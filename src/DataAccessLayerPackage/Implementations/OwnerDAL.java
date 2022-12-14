@@ -3,39 +3,42 @@ package DataAccessLayerPackage.Implementations;
 import AssetsPackage.CharacterPackage.Worker;
 import DataAccessLayerPackage.Interfaces.ICharacterDAL;
 
+import java.sql.Statement;
+
 public class OwnerDAL implements ICharacterDAL {
+
     @Override
-    public void displayById(String id) {
+    public void displayById(Statement statement, String id) {
 
     }
 
     @Override
-    public void displayByName(String name) {
+    public void displayByName(Statement statement, String name) {
 
     }
 
     @Override
-    public void displayBySsn(String ssn) {
+    public void displayBySsn(Statement statement, String ssn) {
 
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Statement statement, String id) {
 
     }
 
     @Override
-    public void deleteBySsn(String ssn) {
+    public void deleteBySsn(Statement statement, String ssn) {
 
     }
 
     @Override
-    public void updateById(String id) {
+    public void updateById(Statement statement, String id) {
 
     }
 
     @Override
-    public void updateBySsn(String ssn) {
+    public void updateBySsn(Statement statement, String ssn) {
 
     }
 
