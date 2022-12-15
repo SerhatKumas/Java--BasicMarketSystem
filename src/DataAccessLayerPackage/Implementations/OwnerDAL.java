@@ -10,6 +10,18 @@ import java.util.Date;
 public class OwnerDAL implements ICharacterDAL {
 
     @Override
+    public void displayAll(Statement statement) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM ownertable");
+            while(resultSet.next()){
+                System.out.println("Owner Id : "+resultSet.getString(1) + " \nOwner Name : "+resultSet.getString(2)+" \nOwner Phone : "+resultSet.getString(3)+" \nOwner SSN : "+resultSet.getString(4)+" \nOwner Adress : "+resultSet.getString(5)+" \nOwner Market Id : "+resultSet.getString(6)+" \nOwner birth date : "+resultSet.getDate(7)+" \nOwner Share Percentage : "+resultSet.getString(9));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
     public void displayById(Statement statement, String id) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM ownertable WHERE OwnerId = '"+id+"'");
@@ -84,7 +96,7 @@ public class OwnerDAL implements ICharacterDAL {
                 System.out.println("Owner can not be added.");
             }
             else{
-                System.out.println("Owner with is added.");
+                System.out.println("Owner is added.");
             }
         } catch (Exception e) {
             System.out.println(e);

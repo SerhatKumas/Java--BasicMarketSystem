@@ -8,6 +8,17 @@ import java.util.Date;
 
 public class ProductDAL implements IProductDAL {
 
+    @Override
+    public void displayAllProducts(Statement statement) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable");
+            while(resultSet.next()){
+                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     @Override
     public void displayProductsByName(Statement statement, String name) {
@@ -69,7 +80,7 @@ public class ProductDAL implements IProductDAL {
 
             }
             else{
-                System.out.println("Product with is added.");
+                System.out.println("Product is added.");
             }
         } catch (Exception e) {
             System.out.println(e);

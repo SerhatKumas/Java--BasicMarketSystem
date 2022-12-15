@@ -9,6 +9,18 @@ import java.sql.Statement;
 public class MarketDAL implements IMarketDAL {
 
     @Override
+    public void displayAllMarkets(Statement statement) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM markettable");
+            while(resultSet.next()){
+                System.out.println("Market Id : "+resultSet.getString(1) + " \nMarket Name : "+resultSet.getString(2)+" \nMarket Location : "+resultSet.getString(3)+" \nOwner Id : "+resultSet.getString(4));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
     public void displayMarketsByName(Statement statement, String name) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM markettable WHERE MarketName = '"+name+"'");
@@ -81,7 +93,7 @@ public class MarketDAL implements IMarketDAL {
 
             }
             else{
-                System.out.println("Employee with is added.");
+                System.out.println("Employee is added.");
             }
         } catch (Exception e) {
             System.out.println(e);

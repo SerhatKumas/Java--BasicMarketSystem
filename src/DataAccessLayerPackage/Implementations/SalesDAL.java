@@ -9,6 +9,18 @@ import java.sql.Statement;
 public class SalesDAL implements ISalesDAL {
 
     @Override
+    public void displayAllSales(Statement statement) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM salestable");
+            while(resultSet.next()){
+                System.out.println("Sales Id : "+resultSet.getString(1) + " \nShift Id : "+resultSet.getString(2)+" \nWorker Id : "+resultSet.getString(3)+" \nProduct Id : "+resultSet.getString(4));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
     public void displaySaleByID(Statement statement, String id) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM salestable WHERE SalesId = '"+id+"'");
@@ -80,7 +92,7 @@ public class SalesDAL implements ISalesDAL {
 
             }
             else{
-                System.out.println("Sales with is added.");
+                System.out.println("Sales is added.");
             }
         } catch (Exception e) {
             System.out.println(e);

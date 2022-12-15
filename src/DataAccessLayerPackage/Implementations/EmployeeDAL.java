@@ -9,6 +9,18 @@ import java.util.Date;
 public class EmployeeDAL implements ICharacterDAL {
 
     @Override
+    public void displayAll(Statement statement) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable");
+            while(resultSet.next()){
+                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
     public void displayById(Statement statement, String id) {
         try {
         ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeId = '"+id+"'");
@@ -83,7 +95,7 @@ public class EmployeeDAL implements ICharacterDAL {
 
             }
             else{
-                System.out.println("Employee with is added.");
+                System.out.println("Employee is added.");
             }
         } catch (Exception e) {
             System.out.println(e);

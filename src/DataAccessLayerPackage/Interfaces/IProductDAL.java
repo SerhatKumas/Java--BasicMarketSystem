@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 public interface IProductDAL {
+    void displayAllProducts(Statement statement);
     void displayProductsByName(Statement statement, String name);
     void displayProductsByCategory(Statement statement, String category);
     void displayProductById(Statement statement, String id);
