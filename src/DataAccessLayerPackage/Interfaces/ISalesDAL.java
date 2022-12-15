@@ -12,11 +12,5 @@ public interface ISalesDAL {
 
     void deleteSalesById(Statement statement, String id);
 
-    void updateSalesById(Statement statement, String id);
-
-    Sales createSales(Statement statement, String salesId, String shiftId, String workerId, String productId);
-
-    void addSales(Statement statement, String salesId, String shiftId, String workerId, String productId);
-
-    void printSales(Sales sales);
+    void createSales(Statement statement, String salesId, String shiftId, String workerId, String productId);
 }
