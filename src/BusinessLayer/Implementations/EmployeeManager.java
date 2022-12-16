@@ -1,40 +1,44 @@
 package BusinessLayer.Implementations;
 
 import BusinessLayer.Interfaces.IEmployeeManager;
+import DataAccessLayerPackage.Implementations.EmployeeDAL;
+
+import java.sql.Statement;
+import java.util.Date;
 
 public class EmployeeManager implements IEmployeeManager {
     @Override
-    public void displayAllEmployees() {
-
+    public void displayAllEmployees(EmployeeDAL employeeDal, Statement statement) {
+    employeeDal.displayAll(statement);
     }
 
     @Override
-    public void displayEmployeeById() {
-
+    public void displayEmployeeById(EmployeeDAL employeeDal, Statement statement, String EmployeeId) {
+    employeeDal.displayById(statement,EmployeeId);
     }
 
     @Override
-    public void displayEmployeesByName() {
-
+    public void displayEmployeesByName(EmployeeDAL employeeDal, Statement statement, String EmployeeName) {
+    employeeDal.displayByName(statement,EmployeeName);
     }
 
     @Override
-    public void displayEmployeeBySsn() {
-
+    public void displayEmployeeBySsn(EmployeeDAL employeeDal, Statement statement, String EmployeeSsn) {
+    employeeDal.displayBySsn(statement,EmployeeSsn);
     }
 
     @Override
-    public void deleteEmployeeById() {
-
+    public void deleteEmployeeById(EmployeeDAL employeeDal, Statement statement, String EmployeeId) {
+    employeeDal.deleteById(statement,EmployeeId);
     }
 
     @Override
-    public void deleteEmployeeBySsn() {
-
+    public void deleteEmployeeBySsn(EmployeeDAL employeeDal, Statement statement, String EmployeeSsn) {
+    employeeDal.deleteBySsn(statement,EmployeeSsn);
     }
 
     @Override
-    public void addNewEmployee() {
-
+    public void addNewEmployee(EmployeeDAL employeeDal, Statement statement, String workerId, String name, String phone, String ssn, String address, String marketId, Date dateOfBirth, String title, Date startDate, Date endDate, String workerPassword) {
+    employeeDal.createNewEmployee(statement, workerId, name, phone, ssn, address, marketId, dateOfBirth, title, startDate, endDate, workerPassword);
     }
 }
