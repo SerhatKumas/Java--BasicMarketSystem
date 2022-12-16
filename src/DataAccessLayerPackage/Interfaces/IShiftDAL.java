@@ -7,6 +7,7 @@ import java.util.Date;
 
 public interface IShiftDAL {
     void displayAllShifts(Statement statement);
+    void displayByShiftId(Statement statement, String id);
     void displayByDate(Statement statement, String date);
     void displayByTimeRange(Statement statement, String startTime, String endTime);
     void displayByEmployeeId(Statement statement, String id);

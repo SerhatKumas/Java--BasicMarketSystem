@@ -22,6 +22,17 @@ public class ShiftDAL implements IShiftDAL {
     }
 
     @Override
+    public void displayByShiftId(Statement statement, String id) {
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM shifttable WHERE ShiftId = '"+id+"'");
+            while(resultSet.next()){
+                System.out.println("Shift Id : "+resultSet.getString(1) + " \nEmployee Id : "+resultSet.getString(2)+" \nEmployee Name : "+resultSet.getString(3)+" \nStart Time : "+resultSet.getString(4)+" \nEnd Time : "+resultSet.getString(5)+" \nShift Day : "+resultSet.getDate(6));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    @Override
     public void displayByDate(Statement statement, String date) {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM shifttable WHERE ShiftDate = '"+date+"'");
