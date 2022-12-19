@@ -49,12 +49,11 @@ public class AdminInterface implements IAdminInterface {
     }
 
     @Override
-    public void cashierMenu() {
+    public void printCashierMenu() {
 
     }
 
-    @Override
-    public void programRunner() {
+    public void adminProgramRunner() {
 
     }
 }

@@ -39,12 +39,11 @@ public class OwnerInterface implements IOwnerInterface {
     }
 
     @Override
-    public void cashierMenu() {
+    public void printCashierMenu() {
 
     }
 
-    @Override
-    public void programRunner() {
+    public void ownerProgramRunner() {
 
     }
 }
