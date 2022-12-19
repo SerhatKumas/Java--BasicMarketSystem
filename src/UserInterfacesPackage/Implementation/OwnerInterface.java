@@ -5,7 +5,7 @@ import UserInterfacesPackage.Interfaces.IOwnerInterface;
 public class OwnerInterface implements IOwnerInterface {
     @Override
     public void printEmployeeMenu() {
-        System.out.println("\n--------- Product Menu -----------");
+        System.out.println("\n--------- Employee Menu -----------");
         System.out.println("1)Display employee by Id\n2)Display employee by name\n3)Display all employees\n4)Display employee by ssn\n5)Add employee\n6)Delete employee by id\n7)Delete employee by ssn\n8)Previous menu");
     }
 
@@ -40,7 +40,7 @@ public class OwnerInterface implements IOwnerInterface {
 
     @Override
     public void printLogoutMessage() {
-        System.out.println("Good bye..\nYou are logged out and you're shift has finished.");
+        System.out.println("Good bye..\nYou are logged out");
     }
 
     @Override
