@@ -11,6 +11,8 @@ public interface IProductManager {
     void displayProductById(IProductDAL productDal, Statement statement, String productId);
     void displayProductByName(IProductDAL productDal, Statement statement, String productName);
     void displayProductByCategory(IProductDAL productDal, Statement statement, String productCategory);
+    void sellProductById(IProductDAL productDal, Statement statement, String id);
+    void refundProductById(IProductDAL productDal, Statement statement, String id);
     void deleteProductById(IProductDAL productDal, Statement statement, String productId);
     void addNewProduct(IProductDAL productDal, Statement statement, String name, String productId, String marketId, String productCategory, Date dateOfProduction, Date dateOfRecommendedLastConsumption, Date dateOfRegisteredInMarket, Date dateOfPurchase);
 }

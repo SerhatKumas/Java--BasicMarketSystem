@@ -28,6 +28,16 @@ public class ProductManager implements IProductManager {
     }
 
     @Override
+    public void sellProductById(IProductDAL productDal, Statement statement, String id) {
+    productDal.sellProductById(statement,id);
+    }
+
+    @Override
+    public void refundProductById(IProductDAL productDal, Statement statement, String id) {
+    productDal.refundProductById(statement,id);
+    }
+
+    @Override
     public void deleteProductById(IProductDAL productDal, Statement statement, String productId) {
     productDal.deleteProductById(statement,productId);
     }

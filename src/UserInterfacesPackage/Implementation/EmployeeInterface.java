@@ -61,9 +61,13 @@ public class EmployeeInterface implements IUserInterface {
                     printCashierMenu();
                     inMenuChoice = imputScanner.nextInt();
                     if(inMenuChoice == 1){
-                        //Product selling - > add purchase date to  product by id from database
+                        System.out.println("Enter product id");
+                        String productId = imputScanner.next();
+                        productManager.sellProductById(productDal,statement,productId);
                     } else if (inMenuChoice == 2) {
-                        // refund product by Id or delete update purchase date null by id from database
+                        System.out.println("Enter product id");
+                        String productId = imputScanner.next();
+                        productManager.refundProductById(productDal,statement,productId);
                     } else if (inMenuChoice == 3) {
                         break;
                     }

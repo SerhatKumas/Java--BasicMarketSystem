@@ -4,6 +4,8 @@ import DataAccessLayerPackage.Interfaces.IProductDAL;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ProductDAL implements IProductDAL {
@@ -11,7 +13,7 @@ public class ProductDAL implements IProductDAL {
     @Override
     public void displayAllProducts(Statement statement) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable Where dateOfPurchase IS NOT NULL ");
             while(resultSet.next()){
                 System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
             }
@@ -50,6 +52,42 @@ public class ProductDAL implements IProductDAL {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable WHERE ProductId = '"+id+"'");
             while(resultSet.next()){
                 System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void sellProductById(Statement statement, String id) {
+        try {
+            boolean isAdded = statement.execute("UPDATE producttable SET DateOfPurchase = '"+new java.sql.Date(new Date().getTime()) +"' WHERE ProductId = '"+id+"'");
+            if(isAdded){
+                System.out.println("Item can not be sold.");
+
+            }
+            else{
+                System.out.println("Item with id "+ id +" is sold.");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void refundProductById(Statement statement, String id) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+            java.util.Date date = sdf.parse("9999-99-99");
+
+            java.sql.Date sqlDate = new java.sql.Date(Long.valueOf(date.getTime()));
+            boolean isAdded = statement.execute("UPDATE producttable SET DateOfPurchase = '"+sqlDate+"' WHERE ProductId = '"+id+"'");
+            if(isAdded){
+                System.out.println("Item can not be refunded.");
+
+            }
+            else{
+                System.out.println("Item with id "+ id +" is refunded.");
             }
         } catch (Exception e) {
             System.out.println(e);
