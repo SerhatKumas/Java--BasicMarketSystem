@@ -4,6 +4,7 @@ import BusinessLayer.Interfaces.IProductManager;
 import BusinessLayer.Interfaces.ISalesManager;
 import BusinessLayer.Interfaces.IShiftManager;
 import DataAccessLayerPackage.Interfaces.IProductDAL;
+import DataAccessLayerPackage.Interfaces.ISalesDAL;
 import DataAccessLayerPackage.Interfaces.IShiftDAL;
 import UserInterfacesPackage.Interfaces.IUserInterface;
 
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.SplittableRandom;
 
 public class EmployeeInterface implements IUserInterface {
 
@@ -44,12 +46,15 @@ public class EmployeeInterface implements IUserInterface {
         System.out.println("1)Display product by Id\n2)Display product by name\n3)Display all products\n4)Display product by category\n5)Previous menu");
     }
 
-    public void programRunner(Statement statement, String employeeId, String employeeName, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, IProductManager productManager, IProductDAL productDal) throws SQLException {
+    public void programRunner(Statement statement, String employeeId, String employeeName, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) throws SQLException {
         printWelcomeMessage();
         ResultSet rs = statement.executeQuery("select count(*) from shifttable");
         rs.next();
-        int count = rs.getInt(1);
-        shiftManager.addNewShift(shiftDal, statement, String.valueOf(count+1), employeeId, employeeName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()),"");
+        int shiftCount = rs.getInt(1);
+        rs = statement.executeQuery("select count(*) from salesTable");
+        rs.next();
+        int salesCount = rs.getInt(1);
+        shiftManager.addNewShift(shiftDal, statement, String.valueOf(shiftCount+1), employeeId, employeeName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()),"");
         Scanner imputScanner = new Scanner(System.in);
         int menuChoice;
         int inMenuChoice;
@@ -64,10 +69,12 @@ public class EmployeeInterface implements IUserInterface {
                         System.out.println("Enter product id");
                         String productId = imputScanner.next();
                         productManager.sellProductById(productDal,statement,productId);
+                        salesManager.addNewSales(salesDal,statement,String.valueOf(salesCount+1), String.valueOf(shiftCount+1),employeeId,productId);
                     } else if (inMenuChoice == 2) {
                         System.out.println("Enter product id");
                         String productId = imputScanner.next();
                         productManager.refundProductById(productDal,statement,productId);
+                        salesManager.deleteSalesBySalesId(salesDal,statement,String.valueOf(salesCount+1));
                     } else if (inMenuChoice == 3) {
                         break;
                     }
@@ -102,7 +109,7 @@ public class EmployeeInterface implements IUserInterface {
                         break;
                     }
                 } else if (menuChoice == 3) {
-                    shiftManager.closeShiftsById(shiftDal,statement,String.valueOf(count+1));
+                    shiftManager.closeShiftsById(shiftDal,statement,String.valueOf(shiftCount+1));
                     printLogoutMessage();
                     System.exit(0);
                 }
