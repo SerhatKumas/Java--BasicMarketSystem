@@ -98,6 +98,7 @@ public class EmployeeInterface implements IUserInterface {
                         break;
                     }
                 } else if (menuChoice == 3) {
+                    shiftManager.closeShiftsById(shiftDal,statement,String.valueOf(count+1));
                     printLogoutMessage();
                     System.exit(0);
                 }

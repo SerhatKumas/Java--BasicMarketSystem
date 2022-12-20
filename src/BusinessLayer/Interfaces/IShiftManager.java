@@ -12,5 +12,6 @@ public interface IShiftManager {
     void displayShiftsByWorkerName(IShiftDAL shiftDal, Statement statement, String workerName);
     void displayShiftsByTimeRange(IShiftDAL shiftDal, Statement statement, String startTime, String endTime);
     void displayShiftsByDate(IShiftDAL shiftDal, Statement statement, String date);
+    void closeShiftsById(IShiftDAL shiftDal, Statement statement, String id);
     void addNewShift(IShiftDAL shiftDal, Statement statement, String shiftId, String employeeId, String employeeName, Date shiftDay, String timeOfStart, String timeOfEnd);
 }

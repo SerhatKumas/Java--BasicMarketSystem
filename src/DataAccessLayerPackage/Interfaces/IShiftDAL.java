@@ -12,6 +12,6 @@ public interface IShiftDAL {
     void displayByTimeRange(Statement statement, String startTime, String endTime);
     void displayByEmployeeId(Statement statement, String id);
     void displayByEmployeeName(Statement statement, String name);
-
+    void closeTheShiftById(Statement statement, String id);
     void createShift(Statement statement, String shiftId, String employeeId, String employeeName, Date shiftDay, String timeOfStart, String timeOfEnd);
 }

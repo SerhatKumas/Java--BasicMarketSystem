@@ -38,6 +38,11 @@ public class ShiftManager implements IShiftManager {
     }
 
     @Override
+    public void closeShiftsById(IShiftDAL shiftDal, Statement statement, String id) {
+        shiftDal.closeTheShiftById(statement,id);
+    }
+
+    @Override
     public void addNewShift(IShiftDAL shiftDal, Statement statement, String shiftId, String employeeId, String employeeName, Date shiftDay, String timeOfStart, String timeOfEnd) {
     shiftDal.createShift(statement, shiftId, employeeId, employeeName, shiftDay, timeOfStart, timeOfEnd);
     }

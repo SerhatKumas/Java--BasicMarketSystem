@@ -5,6 +5,7 @@ import DataAccessLayerPackage.Interfaces.IShiftDAL;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ShiftDAL implements IShiftDAL {
@@ -74,6 +75,22 @@ public class ShiftDAL implements IShiftDAL {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM shifttable WHERE EmployeeName = '"+name+"'");
             while(resultSet.next()){
                 System.out.println("Shift Id : "+resultSet.getString(1) + " \nEmployee Id : "+resultSet.getString(2)+" \nEmployee Name : "+resultSet.getString(3)+" \nStart Time : "+resultSet.getString(4)+" \nEnd Time : "+resultSet.getString(5)+" \nShift Day : "+resultSet.getDate(6));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void closeTheShiftById(Statement statement, String id) {
+        try {
+            boolean isAdded = statement.execute("UPDATE shifttable SET TimeOfEnd = '"+String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()) +"' WHERE ShiftId = '"+id+"'");
+            if(isAdded){
+                System.out.println("Shift can not be closed.");
+
+            }
+            else{
+                System.out.println("Shift is closed.");
             }
         } catch (Exception e) {
             System.out.println(e);
