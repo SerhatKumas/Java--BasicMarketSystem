@@ -13,9 +13,9 @@ public class ProductDAL implements IProductDAL {
     @Override
     public void displayAllProducts(Statement statement) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable Where dateOfPurchase IS NOT NULL ");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable Where dateOfPurchase = '0000-00-00'");
             while(resultSet.next()){
-                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -25,9 +25,9 @@ public class ProductDAL implements IProductDAL {
     @Override
     public void displayProductsByName(Statement statement, String name) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable WHERE ProductName = '"+name+"'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable WHERE ProductName = '"+name+"' AND dateOfPurchase = '0000-00-00'");
             while(resultSet.next()){
-                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -39,7 +39,7 @@ public class ProductDAL implements IProductDAL {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable WHERE ProductCategory = '"+category+"'");
             while(resultSet.next()){
-                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -51,7 +51,7 @@ public class ProductDAL implements IProductDAL {
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM producttable WHERE ProductId = '"+id+"'");
             while(resultSet.next()){
-                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7)+"\n Date Of Purchase : "+resultSet.getDate(8));
+                System.out.println("Product Id : "+resultSet.getString(1) + " \nProduct Name : "+resultSet.getString(2)+" \nProduct Category : "+resultSet.getString(3)+" \nMarket Id : "+resultSet.getString(4)+" \nDate Of Production: "+resultSet.getDate(5)+" \nDate Of Recommendation Consumption : "+resultSet.getDate(6)+" \nDate Of Registered In Market : "+resultSet.getDate(7));
             }
         } catch (Exception e) {
             System.out.println(e);

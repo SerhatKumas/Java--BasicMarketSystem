@@ -11,9 +11,9 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void displayAll(Statement statement) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable where EndDate = '0000-00-00'");
             while(resultSet.next()){
-                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
+                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+"\n");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -23,9 +23,9 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void displayById(Statement statement, String id) {
         try {
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeId = '"+id+"'");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeId = '"+id+"' AND EndDate = '0000-00-00'");
         while(resultSet.next()){
-            System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
+            System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+"\n");
         }
     } catch (Exception e) {
         System.out.println(e);
@@ -35,9 +35,9 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void displayByName(Statement statement, String name) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeName = '"+name+"'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeName = '"+name+"' AND EndDate = '0000-00-00'");
             while(resultSet.next()){
-                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
+                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+"\n");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -47,9 +47,9 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void displayBySsn(Statement statement, String ssn) {
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeSSN = '"+ssn+"'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM employeetable WHERE EmployeeSSN = '"+ssn+"' AND EndDate = '0000-00-00'");
             while(resultSet.next()){
-                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+" \nEmployee Job End Date : "+null+"\n");
+                System.out.println("Employee Id : "+resultSet.getString(1) + " \nEmployee Name : "+resultSet.getString(2)+" \nEmployee Phone : "+resultSet.getString(3)+" \nEmployee SSN : "+resultSet.getString(4)+" \nEmployee Adress : "+resultSet.getString(5)+" \nEmployee Market Id : "+resultSet.getString(6)+" \nEmployee birth date : "+resultSet.getDate(7)+" \nEmployee Title : "+resultSet.getString(8)+" \nEmployee Job Start Date : "+resultSet.getDate(9)+"\n");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -59,7 +59,7 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void deleteById(Statement statement, String id) {
         try {
-         boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeId = '"+id+"'");
+         boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeId = '"+id+"' AND EndDate = '0000-00-00'");
          if(isDeleted){
              System.out.println("Employee can not be deleted.");
 
@@ -75,7 +75,7 @@ public class EmployeeDAL implements ICharacterDAL {
     @Override
     public void deleteBySsn(Statement statement, String ssn) {
         try {
-            boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeSSN = '"+ssn+"'");
+            boolean isDeleted = statement.execute("DELETE FROM employeetable WHERE EmployeeSSN = '"+ssn+"' AND EndDate = '0000-00-00'");
             if(isDeleted){
                 System.out.println("Employee can not be deleted.");
             }

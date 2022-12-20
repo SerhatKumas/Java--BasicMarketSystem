@@ -49,7 +49,7 @@ public class EmployeeInterface implements IUserInterface {
         ResultSet rs = statement.executeQuery("select count(*) from shifttable");
         rs.next();
         int count = rs.getInt(1);
-        shiftManager.addNewShift(shiftDal, statement, String.valueOf(count+1), employeeId, employeeName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+ String.valueOf(LocalDateTime.now().getMinute()),"");
+        shiftManager.addNewShift(shiftDal, statement, String.valueOf(count+1), employeeId, employeeName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()),"");
         Scanner imputScanner = new Scanner(System.in);
         int menuChoice;
         int inMenuChoice;
