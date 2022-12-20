@@ -46,14 +46,20 @@ public class EmployeeInterface implements IUserInterface {
         System.out.println("1)Display product by Id\n2)Display product by name\n3)Display all products\n4)Display product by category\n5)Previous menu");
     }
 
-    public void programRunner(Statement statement, String employeeId, String employeeName, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) throws SQLException {
+    public void programRunner(Statement statement, String employeeId, String employeeName, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal){
         printWelcomeMessage();
-        ResultSet rs = statement.executeQuery("select count(*) from shifttable");
-        rs.next();
-        int shiftCount = rs.getInt(1);
-        rs = statement.executeQuery("select count(*) from salesTable");
-        rs.next();
-        int salesCount = rs.getInt(1);
+        int shiftCount = 0;
+        int salesCount = 0;
+        try {
+            ResultSet rs = statement.executeQuery("select count(*) from shifttable");
+            rs.next();
+            shiftCount = rs.getInt(1);
+            rs = statement.executeQuery("select count(*) from salesTable");
+            rs.next();
+            salesCount = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         shiftManager.addNewShift(shiftDal, statement, String.valueOf(shiftCount+1), employeeId, employeeName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()),"");
         Scanner imputScanner = new Scanner(System.in);
         int menuChoice;
