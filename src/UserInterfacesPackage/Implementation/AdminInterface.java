@@ -5,7 +5,7 @@ import UserInterfacesPackage.Interfaces.IAdminInterface;
 public class AdminInterface implements IAdminInterface {
     @Override
     public void printMarketMenu() {
-        System.out.println("\n--------- Employee Menu -----------");
+        System.out.println("\n--------- Market Menu -----------");
         System.out.println("1)Display market by Id\n2)Display market by name\n3)Display all markets\n4)Display markets by location\n5)Display markets by owner id\n6)Add employee\n7)Delete markets by id\n8)Previous menu");
     }
 
@@ -53,12 +53,6 @@ public class AdminInterface implements IAdminInterface {
     @Override
     public void printLogoutMessage() {
         System.out.println("Good bye..\nYou are logged out");
-    }
-
-    @Override
-    public void printCashierMenu() {
-        System.out.println("\n--------- Cashier Menu -----------");
-        System.out.println("1)Sell product by Id\n2)Refund product by Id\n3)Previous menu");
     }
 
     public void adminProgramRunner() {

@@ -34,7 +34,6 @@ public class EmployeeInterface implements IUserInterface {
         System.out.println("Good bye..\nYou are logged out and you're shift has finished.");
     }
 
-    @Override
     public void printCashierMenu() {
         System.out.println("\n--------- Cashier Menu -----------");
         System.out.println("1)Sell product by Id\n2)Refund product by Id\n3)Previous menu");
