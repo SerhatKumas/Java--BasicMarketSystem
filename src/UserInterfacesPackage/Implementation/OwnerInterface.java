@@ -65,11 +65,12 @@ public class OwnerInterface implements IOwnerInterface {
         System.out.println("1)Sell product by Id\n2)Refund product by Id\n3)Previous menu");
     }
 
-    public void programRunner(Statement statement, String ownerId, IEmployeeManager employeeManager, EmployeeDAL employeeDal, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) throws ParseException {
+    public void programRunner(Statement statement, String ownerId, IEmployeeManager employeeManager, EmployeeDAL employeeDal, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) {
         printWelcomeMessage();
         int shiftCount = 0;
         int salesCount = 0;
         int employeeCount = 0;
+        int productCount = 0;
         try {
             ResultSet rs = statement.executeQuery("select count(*) from shifttable");
             rs.next();
@@ -80,6 +81,9 @@ public class OwnerInterface implements IOwnerInterface {
             rs = statement.executeQuery("select count(*) from employeetable");
             rs.next();
             employeeCount = rs.getInt(1);
+            rs = statement.executeQuery("select count(*) from producttable");
+            rs.next();
+            productCount = rs.getInt(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -131,6 +135,43 @@ public class OwnerInterface implements IOwnerInterface {
                         productManager.displayProductByCategory(productDal,statement,productCategory);
                     }
                     else if (inMenuChoice == 5) {
+                        System.out.println("Enter product name");
+                        String productName = imputScanner.next();
+                        System.out.println("Enter product market id");
+                        String productId = imputScanner.next();
+                        System.out.println("Enter product category");
+                        String category = imputScanner.next();
+                        System.out.println("Enter production date yyyy-mm-dd");
+                        String productionDate = imputScanner.next();
+                        System.out.println("Enter recommended consumption date yyyy-mm-dd");
+                        String recommendedDate = imputScanner.next();
+
+
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+                        Date date = null;
+                        Date dateRecommended = null;
+                        Date dateNull = null;
+                        try {
+                            date = sdf.parse(productionDate);
+                            dateRecommended = sdf.parse(recommendedDate);
+                            dateNull = sdf.parse("0000-00-00");
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        java.sql.Date productionSqlDate = new java.sql.Date(Long.valueOf(date.getTime()));
+                        java.sql.Date recommendedSqlDate = new java.sql.Date(Long.valueOf(dateRecommended.getTime()));
+                        java.sql.Date nullSqlDate = new java.sql.Date(Long.valueOf(dateNull.getTime()));
+
+                        productManager.addNewProduct(productDal,statement,productName,String.valueOf(productCount+1),productId,category,productionSqlDate,recommendedSqlDate,new java.sql.Date(new Date().getTime()),nullSqlDate);
+                        productCount++;
+                    }
+                    else if (inMenuChoice == 6) {
+                        System.out.println("Enter product id");
+                        String productId = imputScanner.next();
+                        productManager.deleteProductById(productDal,statement,productId);
+                    }
+                    else if (inMenuChoice == 7) {
                         break;
                     }
                     else {
@@ -254,8 +295,14 @@ public class OwnerInterface implements IOwnerInterface {
 
 
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-                        java.util.Date date = sdf.parse(birthDate);
-                        java.util.Date dateNull = sdf.parse("0000-00-00");
+                        Date date = null;
+                        Date dateNull = null;
+                        try {
+                            date = sdf.parse(birthDate);
+                            dateNull = sdf.parse("0000-00-00");
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
                         java.sql.Date sqlDate = new java.sql.Date(Long.valueOf(date.getTime()));
                         java.sql.Date sqlDateNull = new java.sql.Date(Long.valueOf(dateNull.getTime()));
 
@@ -263,7 +310,7 @@ public class OwnerInterface implements IOwnerInterface {
                         employeeCount++;
                     }
                     else if (inMenuChoice == 6) {
-                        System.out.println("Enter emloyee id");
+                        System.out.println("Enter employee id");
                         String employeeId = imputScanner.next();
                         employeeManager.deleteEmployeeById(employeeDal,statement,employeeId);
                     }
