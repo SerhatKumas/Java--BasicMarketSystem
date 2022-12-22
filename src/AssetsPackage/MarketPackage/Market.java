@@ -1,6 +1,9 @@
 package AssetsPackage.MarketPackage;
 
 public class Market {
+
+    //Market class and properties
+
     private String marketId;
     private String name;
     private String location;

@@ -2,7 +2,10 @@ package AssetsPackage.CharacterPackage;
 
 import java.util.Date;
 
-public class Employee extends Worker{
+public class Employee extends Worker {
+
+    //Employee and admin type class and properties
+
     private String title;
     private Date startDate;
     private Date endDate;

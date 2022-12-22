@@ -3,6 +3,9 @@ package AssetsPackage.ProductPackage;
 import java.util.Date;
 
 public class Product {
+
+    //Product class and properties
+
     private String name;
     private String productId;
     private String marketId;
@@ -34,7 +37,7 @@ public class Product {
         this.dateOfPurchase = dateOfPurchase;
     }
 
-    public Product(Product product){
+    public Product(Product product) {
         this.name = product.name;
         this.productId = product.productId;
         this.marketId = product.marketId;

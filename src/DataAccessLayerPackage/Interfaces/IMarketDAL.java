@@ -7,9 +7,13 @@ import java.sql.Statement;
 public interface IMarketDAL {
 
     void displayAllMarkets(Statement statement);
+
     void displayMarketsByName(Statement statement, String name);
+
     void displayMarketsByLocation(Statement statement, String location);
+
     void displayMarketByMarketId(Statement statement, String id);
+
     void displayMarketsByOwnerId(Statement statement, String id);
 
     void deleteMarketByMarketId(Statement statement, String id);

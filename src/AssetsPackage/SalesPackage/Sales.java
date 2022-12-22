@@ -2,6 +2,8 @@ package AssetsPackage.SalesPackage;
 
 public class Sales {
 
+    //Sales class and properties
+
     private String salesId;
     private String shiftId;
     private String workerId;
@@ -13,6 +15,7 @@ public class Sales {
         this.workerId = "";
         this.productId = "";
     }
+
     public Sales(String salesId, String shiftId, String workerId, String productId) {
         this.salesId = salesId;
         this.shiftId = shiftId;

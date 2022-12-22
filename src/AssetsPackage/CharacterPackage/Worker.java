@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Worker {
 
+    //Base class for all type of workers and properties
+
     private String name;
     private String phone;
     private Date dateOfBirth;

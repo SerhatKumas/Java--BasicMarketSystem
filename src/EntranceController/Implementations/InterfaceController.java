@@ -13,18 +13,23 @@ import java.sql.Statement;
 
 
 public class InterfaceController implements IUserInterfaceController {
+    //User type interface creation method class
+
+    //Owner Interface Creation
     @Override
     public void createOwnerInterface(OwnerInterface ownerInterface, Statement statement, String ownerId, String ownerName) {
-        ownerInterface.programRunner(statement,ownerId,ownerName,new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
+        ownerInterface.programRunner(statement, ownerId, ownerName, new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
     }
 
+    //Employee Interface Creation
     @Override
     public void createEmployeeInterface(EmployeeInterface employeeInterface, Statement statement, String employeeId, String employeeName) {
-        employeeInterface.programRunner(statement,employeeId,employeeName, new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
+        employeeInterface.programRunner(statement, employeeId, employeeName, new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
     }
 
+    //Admin Interface Creation
     @Override
-    public void createAdminInterface(AdminInterface adminInterface,Statement statement) {
-        adminInterface.programRunner(statement,new OwnerManager(), new OwnerDAL(), new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL(),new MarketManager(), new MarketDAL());
+    public void createAdminInterface(AdminInterface adminInterface, Statement statement) {
+        adminInterface.programRunner(statement, new OwnerManager(), new OwnerDAL(), new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL(), new MarketManager(), new MarketDAL());
     }
 }

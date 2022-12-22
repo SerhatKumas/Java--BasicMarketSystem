@@ -3,6 +3,9 @@ package AssetsPackage.ShiftPackage;
 import java.util.Date;
 
 public class Shift {
+
+    //Shift class and properties
+
     private String shiftId;
     private String employeeId;
     private String employeeName;

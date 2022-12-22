@@ -2,7 +2,10 @@ package AssetsPackage.CharacterPackage;
 
 import java.util.Date;
 
-public class Owner extends Worker{
+public class Owner extends Worker {
+
+    //Owner type properties
+
     private float sharePercentage;
 
     public Owner() {
