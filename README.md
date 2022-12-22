@@ -8,10 +8,10 @@
 
 
 ## Code layers
-# Login Controller -> Decides which user is logged in.
-# User Interfaces -> Since program is not connected to real front-end part, I created fake front-end methods are described according to different authorization
-# Business Layer -> Layer for business rules and other constraints can be idenfied.
-# Data Access Layer -> It contains database access implementation.
+- Login Controller -> Decides which user is logged in.
+- User Interfaces -> Since program is not connected to real front-end part, I created fake front-end methods are described according to different authorization
+- Business Layer -> Layer for business rules and other constraints can be idenfied.
+- Data Access Layer -> It contains database access implementation.
 
 
 ## Code Parts Explanation
