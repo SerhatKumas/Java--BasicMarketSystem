@@ -4,9 +4,11 @@ import java.sql.Statement;
 
 public interface ILoginController {
 
-    void employeeLogin(IUserInterfaceController userInterfaceController);
-    void ownerLogin(IUserInterfaceController userInterfaceController);
-    void adminLogin(IUserInterfaceController userInterfaceController);
+    boolean employeeLogin(String id, String password);
+    boolean ownerLogin(String id, String password);
+    boolean adminLogin(String id, String password);
+    void printLoginMenu();
+    void programRunner(IUserInterfaceController userInterfaceController);
     Statement getConnection();
 
 }

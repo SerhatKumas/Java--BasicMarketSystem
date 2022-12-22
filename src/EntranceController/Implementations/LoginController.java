@@ -11,14 +11,7 @@ import java.util.Scanner;
 
 public class LoginController implements ILoginController {
     @Override
-    public void employeeLogin(IUserInterfaceController userInterfaceController) {
-        Scanner inputScanner = new Scanner(System.in);
-        System.out.println("Enter employee id : ");
-        String employeeId = inputScanner.next();
-        System.out.println("Enter employee name : ");
-        String employeeName = inputScanner.next();
-        System.out.println("Enter employee password : ");
-        String employeePassword = inputScanner.next();
+    public boolean employeeLogin(String employeeId, String employeePassword) {
         Statement statement = getConnection();
         ResultSet rs = null;
         int employeeCount = 0;
@@ -31,20 +24,15 @@ public class LoginController implements ILoginController {
         }
 
         if (employeeCount ==1){
-            userInterfaceController.createEmployeeInterface(new EmployeeInterface(),statement,employeeId,employeeName);
+            return true;
         }
         else {
-            System.err.println("Check your credentials and try to log-in again");
+            return false;
         }
     }
 
     @Override
-    public void ownerLogin(IUserInterfaceController userInterfaceController) {
-        Scanner inputScanner = new Scanner(System.in);
-        System.out.println("Enter owner id : ");
-        String ownerId = inputScanner.next();
-        System.out.println("Enter owner password : ");
-        String ownerPassword = inputScanner.next();
+    public boolean ownerLogin(String ownerId, String ownerPassword) {
         Statement statement = getConnection();
         ResultSet rs = null;
         int ownerCount = 0;
@@ -57,21 +45,15 @@ public class LoginController implements ILoginController {
         }
 
         if (ownerCount ==1){
-            userInterfaceController.createOwnerInterface(new OwnerInterface(),statement,ownerId);
+            return true;
         }
         else {
-            System.err.println("Check your credentials and try to log-in again");
+            return false;
         }
     }
 
     @Override
-    public void adminLogin(IUserInterfaceController userInterfaceController) {
-        System.out.println("Enter admin id : ");
-        Scanner inputScanner = new Scanner(System.in);
-        String adminId = inputScanner.next();
-        System.out.println("Enter admin password : ");
-        String adminPassword = inputScanner.next();
-
+    public boolean adminLogin(String adminId, String adminPassword) {
         Statement statement = getConnection();
         ResultSet rs = null;
         int adminCount = 0;
@@ -84,10 +66,75 @@ public class LoginController implements ILoginController {
         }
 
         if (adminCount ==1){
-            userInterfaceController.createAdminInterface(new AdminInterface(),statement);
+            return true;
         }
         else {
-            System.err.println("Check your credentials and try to log-in again");
+            return false;
+        }
+    }
+
+    @Override
+    public void printLoginMenu() {
+        System.out.println("Welcome to Market System");
+        System.out.println("\n--------- Login Menu -----------");
+        System.out.println("1)Employee Portal\n2)Owner Portal\n3)Admin Portal\n4)Turn off the system");
+    }
+
+    @Override
+    public void programRunner(IUserInterfaceController userInterfaceController) {
+        Scanner inputScanner = new Scanner(System.in);
+        int menuChoice;
+        while(true){
+            while(true) {
+                printLoginMenu();
+                menuChoice = inputScanner.nextInt();
+                if (menuChoice == 1){
+                    System.out.println("Enter employee id : ");
+                    String employeeId = inputScanner.next();
+                    System.out.println("Enter employee name : ");
+                    String employeeName = inputScanner.next();
+                    System.out.println("Enter employee password : ");
+                    String employeePassword = inputScanner.next();
+                    if (employeeLogin(employeeId,employeePassword)){
+                        userInterfaceController.createEmployeeInterface(new EmployeeInterface(),getConnection(),employeeId,employeeName);
+                    }
+                    else {
+                        System.err.println("Check your credentials and try to log in again...");
+                    }
+                }
+                else if (menuChoice == 2){
+                    System.out.println("Enter owner id : ");
+                    String ownerId = inputScanner.next();
+                    System.out.println("Enter owner password : ");
+                    String ownerPassword = inputScanner.next();
+                    if(ownerLogin(ownerId,ownerPassword)){
+                        userInterfaceController.createOwnerInterface(new OwnerInterface(), getConnection(), ownerId);
+                    }
+                    else {
+                        System.err.println("Check your credentials and try to log in again...");
+                    }
+
+                }
+                else if (menuChoice == 3){
+                    System.out.println("Enter admin id : ");
+                    String adminId = inputScanner.next();
+                    System.out.println("Enter admin password : ");
+                    String adminPassword = inputScanner.next();
+                    if(adminLogin(adminId,adminPassword)){
+                        userInterfaceController.createAdminInterface(new AdminInterface(),getConnection());
+                    }
+                    else {
+                        System.err.println("Check your credentials and try to log in again...");
+                    }
+                }
+                else if (menuChoice == 4){
+                    System.exit(0);
+                    System.out.println("System is terminated...");
+                }
+                else {
+                    System.err.println("Check your choice...");
+                }
+            }
         }
     }
 
@@ -107,5 +154,7 @@ public class LoginController implements ILoginController {
 
         return statement;
     }
+
+
 
 }
