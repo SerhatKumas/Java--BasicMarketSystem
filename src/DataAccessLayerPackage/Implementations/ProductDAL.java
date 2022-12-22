@@ -78,7 +78,7 @@ public class ProductDAL implements IProductDAL {
     public void refundProductById(Statement statement, String id) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-            java.util.Date date = sdf.parse("9999-99-99");
+            java.util.Date date = sdf.parse("0000-00-00");
 
             java.sql.Date sqlDate = new java.sql.Date(Long.valueOf(date.getTime()));
             boolean isAdded = statement.execute("UPDATE producttable SET DateOfPurchase = '"+sqlDate+"' WHERE ProductId = '"+id+"'");

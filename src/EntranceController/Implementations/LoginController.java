@@ -128,8 +128,8 @@ public class LoginController implements ILoginController {
                     }
                 }
                 else if (menuChoice == 4){
-                    System.exit(0);
                     System.out.println("System is terminated...");
+                    System.exit(0);
                 }
                 else {
                     System.err.println("Check your choice...");

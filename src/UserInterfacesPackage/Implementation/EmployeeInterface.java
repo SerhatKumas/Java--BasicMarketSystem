@@ -97,7 +97,7 @@ public class EmployeeInterface implements IUserInterface {
                     } else if (inMenuChoice == 2) {
                         System.out.println("Enter product name");
                         String productName = imputScanner.next();
-                        productManager.displayProductById(productDal, statement, productName);
+                        productManager.displayProductByName(productDal, statement, productName);
                     } else if (inMenuChoice == 3) {
                         productManager.displayAllProducts(productDal,statement);
                     }
