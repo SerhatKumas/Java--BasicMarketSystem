@@ -1,5 +1,6 @@
 package UserInterfacesPackage.Implementation;
 
+import BusinessLayer.Implementations.ShiftManager;
 import BusinessLayer.Interfaces.IEmployeeManager;
 import BusinessLayer.Interfaces.IProductManager;
 import BusinessLayer.Interfaces.ISalesManager;
@@ -65,7 +66,7 @@ public class OwnerInterface implements IOwnerInterface {
         System.out.println("1)Sell product by Id\n2)Refund product by Id\n3)Previous menu");
     }
 
-    public void programRunner(Statement statement, String ownerId, IEmployeeManager employeeManager, EmployeeDAL employeeDal, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) {
+    public void programRunner(Statement statement, String ownerId, String ownerName, IEmployeeManager employeeManager, EmployeeDAL employeeDal, IShiftManager shiftManager, IShiftDAL shiftDal, ISalesManager salesManager, ISalesDAL salesDal, IProductManager productManager, IProductDAL productDal) {
         printWelcomeMessage();
         int shiftCount = 0;
         int salesCount = 0;
@@ -87,6 +88,7 @@ public class OwnerInterface implements IOwnerInterface {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        shiftManager.addNewShift(shiftDal, statement, String.valueOf(shiftCount+1), ownerId, ownerName, new java.sql.Date(new Date().getTime()), String.valueOf(LocalDateTime.now().getHour())+"."+String.valueOf(LocalDateTime.now().getMinute()),"");
         Scanner imputScanner = new Scanner(System.in);
         int menuChoice;
         int inMenuChoice;
@@ -329,6 +331,7 @@ public class OwnerInterface implements IOwnerInterface {
                 }
                 else if (menuChoice == 6) {
                     printLogoutMessage();
+                    shiftManager.closeShiftsById(shiftDal,statement,String.valueOf(shiftCount+1));
                     System.exit(0);
                 }
                 else{

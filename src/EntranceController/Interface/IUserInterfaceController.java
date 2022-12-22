@@ -7,7 +7,7 @@ import UserInterfacesPackage.Implementation.OwnerInterface;
 import java.sql.Statement;
 
 public interface IUserInterfaceController {
-    void createOwnerInterface(OwnerInterface ownerInterface, Statement statement, String ownerId);
+    void createOwnerInterface(OwnerInterface ownerInterface, Statement statement, String ownerId, String ownerName);
     void createEmployeeInterface(EmployeeInterface employeeInterface, Statement statement, String employeeId, String employeeName);
     void createAdminInterface(AdminInterface adminInterface, Statement statement);
 }

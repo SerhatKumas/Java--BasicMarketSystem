@@ -14,8 +14,8 @@ import java.sql.Statement;
 
 public class InterfaceController implements IUserInterfaceController {
     @Override
-    public void createOwnerInterface(OwnerInterface ownerInterface, Statement statement, String ownerId) {
-        ownerInterface.programRunner(statement,ownerId, new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
+    public void createOwnerInterface(OwnerInterface ownerInterface, Statement statement, String ownerId, String ownerName) {
+        ownerInterface.programRunner(statement,ownerId,ownerName,new EmployeeManager(), new EmployeeDAL(), new ShiftManager(), new ShiftDAL(), new SalesManager(), new SalesDAL(), new ProductManager(), new ProductDAL());
     }
 
     @Override

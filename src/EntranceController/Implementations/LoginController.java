@@ -105,10 +105,12 @@ public class LoginController implements ILoginController {
                 else if (menuChoice == 2){
                     System.out.println("Enter owner id : ");
                     String ownerId = inputScanner.next();
+                    System.out.println("Enter owner name : ");
+                    String ownerName = inputScanner.next();
                     System.out.println("Enter owner password : ");
                     String ownerPassword = inputScanner.next();
                     if(ownerLogin(ownerId,ownerPassword)){
-                        userInterfaceController.createOwnerInterface(new OwnerInterface(), getConnection(), ownerId);
+                        userInterfaceController.createOwnerInterface(new OwnerInterface(), getConnection(), ownerId,ownerName);
                     }
                     else {
                         System.err.println("Check your credentials and try to log in again...");
