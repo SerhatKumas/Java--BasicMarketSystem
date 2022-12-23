@@ -48,7 +48,7 @@
 ## How To Run
 - git clone https://github.com/SerhatKumas/Java--BasicMarketSystem.git
 - Open main.java and run it
-- You will be see in user interface on your ide console
+- You will see user interface on your ide console
 
 
 ## Technologies
