@@ -5,6 +5,7 @@
 - I have tried to write code as generic as I could.
 - I have tried keep coupling in the lowest level I could.
 - I have divided part program into components.
+- Login controller and User interface components are implemented to be able to test for the reason not having actual user interface.
 
 
 ## Code layers
